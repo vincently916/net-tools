@@ -1,10 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
-import socket
+import socket,sys
 
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-host = raw_input("Enter the host name or ip address: ") 
-port = int(raw_input("Enter the port number: "))
+host = sys.argv[1]
+port = int(sys.argv[2])
+
+
 result = s.connect_ex((host,port))
 
 if result == 0:
