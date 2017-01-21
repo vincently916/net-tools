@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
-import socket,sys
-
+import socket,sys,argparse
+parser = argparse.ArgumentParser(description="Port scanner")
+parser.add_argument('--host',help='the server name or ip address')
+parser.add_argument('--port', type=int,help='the port number to be checked')
+args = parser.parse_args()
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-host = sys.argv[1]
-port = int(sys.argv[2])
-
+port = args.port 
+host =  args.host
 
 result = s.connect_ex((host,port))
 
